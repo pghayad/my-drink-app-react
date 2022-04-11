@@ -3,22 +3,12 @@
     {
       "strDrink": "Algonquin",
       "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uwryxx1483387873.jpg",
-      "id": 20
-    },
-    {
-      "strDrink": "Algonquin",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uwryxx1483387873.jpg",
       "id": 21
     },
     {
       "strDrink": "ABC",
       "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg",
       "id": 22
-    },
-    {
-      "strDrink": "Algonquin",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uwryxx1483387873.jpg",
-      "id": 23
     },
     {
       "strDrink": "Algonquin",
@@ -44,11 +34,6 @@
       "strDrink": "H.D.",
       "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/upusyu1472667977.jpg",
       "id": 28
-    },
-    {
-      "strDrink": "Rum Sour",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/bylfi21504886323.jpg",
-      "id": 29
     }
   ],
   "comments": [],

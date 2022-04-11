@@ -3,7 +3,7 @@ import Drink from './Drink'
 
 function Favorites( ) {
     const [favs, setFavs] = useState([])
-    //console.log("in Favorites: ", favs)
+
     useEffect(() => {
         fetch("http://localhost:3000/posts")
           .then((r) => r.json())

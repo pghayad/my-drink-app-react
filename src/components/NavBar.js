@@ -33,6 +33,16 @@ function NavBar() {
       >
         Favorites
       </NavLink>
+      <NavLink
+        to="/add"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "darkblue",
+        }}
+      >
+        Add Drink
+      </NavLink>
     </div>
     );
   }

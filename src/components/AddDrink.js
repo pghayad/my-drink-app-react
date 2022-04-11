@@ -10,7 +10,7 @@ function AddDrink( ) {
         const itemData = {
           strDrink: str,
           strDrinkThumb: strThumb,
-          //isInCart: false,
+          likes: 0
         };
         fetch("http://localhost:3000/posts", {
           method: "POST",

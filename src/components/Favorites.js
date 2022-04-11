@@ -19,12 +19,24 @@ function Favorites( ) {
         setFavs(updatedFavs)
     }
 
+    // add this callback function
+    function handleUpdateItem(updatedItem) {
+        const updatedItems = favs.map((fav) => {
+          if (fav.id === updatedItem.id) {
+            return updatedItem;
+          } else {
+            return fav;
+          }
+        });
+        setFavs(updatedItems);
+      }
+
     return (
           <>
         {favs.map(fav => {
             return (
             <>
-            <Drink key={fav.id} fav={fav} onDeleteItem={handleDeleteItem} isFav={true}/>
+            <Drink key={fav.id} fav={fav} onDeleteItem={handleDeleteItem} onUpdateItem={handleUpdateItem} isFav={true}/>
                 {/* <p>{fav.strDrink}</p>
                 <img height="100px" width="100px"src={fav.strDrinkThumb}/>
                 <button onClick={handleDelete}>Delete Favorite</button> */}

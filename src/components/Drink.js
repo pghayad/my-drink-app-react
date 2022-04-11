@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Favorites from './Favorites'
 
-function Drink( { strDrink, strDrinkThumb} ) {
+function Drink( { fav, isFav, onDeleteItem, strDrink, strDrinkThumb} ) {
     const [favs, setFavs] = useState([])
 
     function handleSubmit(e) {
@@ -23,13 +23,35 @@ function Drink( { strDrink, strDrinkThumb} ) {
             setFavs([...favs, newItem]);
           });
       }
+
+      function handleDelete() {
+        fetch(`http://localhost:3000/posts/${fav.id}`, {
+          method: "DELETE",
+        })
+          .then((r) => r.json())
+          .then(() => {
+            onDeleteItem(fav)
+          });
+      }
+
     return (
         <div className="container-md">
+            
+      { !isFav ?   
+      <> 
             <p>{strDrink}</p>
-            <img height="100px" width="100px"src={strDrinkThumb}/>
+            <img height="100px" width="100px"src={strDrinkThumb}/> 
             <form onSubmit={handleSubmit}>
                 <input type="submit" value="Add To Favorites" />
             </form>
+      </>
+            :
+          <>
+            <p>{fav.strDrink}</p>
+            <img height="100px" width="100px" src={fav.strDrinkThumb}/>
+            <button onClick={handleDelete}>Delete</button>
+          </>
+      }
         </div>
           
 

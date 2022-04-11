@@ -1,35 +1,35 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import Drink from './Drink'
 
-function Favorites( { favs } ) {
-    console.log("in Favorites: ", favs)
+function Favorites( ) {
+    const [favs, setFavs] = useState([])
+    //console.log("in Favorites: ", favs)
     useEffect(() => {
         fetch("http://localhost:3000/posts")
           .then((r) => r.json())
           .then((data) => {
             console.log(data)
-            //setDrinks(data);
+            setFavs(data);
           })
       }, []);
 
-      //console.log("in Favorites: ", drinks)
+            // add this callback function
+    function handleDeleteItem(deletedItem) {
+        const updatedFavs = favs.filter((fav) => fav.id !== deletedItem.id)
+        setFavs(updatedFavs)
+    }
+
     return (
-       
-        // <div style={{textAlign: 'center', border: '5px solid black'}} className="container-md">
-           
-        //     {
-        //          drinks.map(drink => {
-        //              return (
-        //              <>
-        //                 <p>{drink.strDrink}</p>
-        //                 <img alt="drinkpic" height="100px" width="100px"src={drink.strDrinkThumb}/>
-        //             </>
-        //              )
-        //         })
-        //     }
-        // </div>
           <>
         {favs.map(fav => {
-            return <p>{fav.strDrink}</p>
+            return (
+            <>
+            <Drink key={fav.id} fav={fav} onDeleteItem={handleDeleteItem} isFav={true}/>
+                {/* <p>{fav.strDrink}</p>
+                <img height="100px" width="100px"src={fav.strDrinkThumb}/>
+                <button onClick={handleDelete}>Delete Favorite</button> */}
+            </>
+            )
         })}
         </>
     );

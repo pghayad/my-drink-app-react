@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
 import DrinkList from './DrinkList'
-import Favorites from './Favorites'
 
 function Search() {
     const [searchTerm, setSearchTerm] = useState("");
     const [data, setData] = useState([])
-    const [favs, setFavs] = useState([])
 
     function handleSubmit(e){
         e.preventDefault()
@@ -22,15 +20,6 @@ function Search() {
         setSearchTerm(() => e.target.value)
     }
 
-    function showFavs(){
-        fetch("http://localhost:3000/posts")
-        .then((r) => r.json())
-        .then((data) => {
-          console.log(data)
-          setFavs(() => data);
-        })
-    }
-
     return (
         <>
         <form onSubmit={handleSubmit}>
@@ -40,9 +29,7 @@ function Search() {
             </label>
             <input type="submit" value="Submit" />
         </form> 
-        <button onClick={showFavs}>Show Favorites</button>
         <DrinkList data={data} searchTerm={searchTerm}/>
-        <Favorites favs={favs}/>
         </>
     );
   }

@@ -53,9 +53,27 @@ function Drink( { fav, isFav, onUpdateItem, onDeleteItem, strDrink, strDrinkThum
           });
       }
 
+      function handleDownvote(){
+        fetch(`http://localhost:3000/posts/${fav.id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            likes: fav.likes - 1,
+          }),
+        })
+          .then((r) => r.json())
+          .then((updatedItem) => {
+            console.log(updatedItem)
+            setLikes(likes)
+            onUpdateItem(updatedItem)
+          });
+      }
+
     return (
-        <div className="container-md">
-            
+      
+        <div className="container-md">   
       { !isFav ?   
       <> 
             <p>{strDrink}</p>
@@ -69,6 +87,7 @@ function Drink( { fav, isFav, onUpdateItem, onDeleteItem, strDrink, strDrinkThum
             <p>{fav.strDrink}</p>
             <img height="100px" width="100px" src={fav.strDrinkThumb}/>
             <button onClick={handleLikes}>Likes: {fav.likes}</button>
+            <button onClick={handleDownvote}>-</button>
             <button onClick={handleDelete}>Delete</button>
           </>
       }

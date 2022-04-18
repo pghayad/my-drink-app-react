@@ -17,7 +17,7 @@ function DrinkList( {searchTerm, data}) {
 
     return (
       <div>
-       { data !== null ? data.map((drink) => (<Drink id={drink.idDrink} key={drink.idDrink} isFav={false} strDrink={drink.strDrink} strDrinkThumb={drink.strDrinkThumb}/>)): <p>No drinks found!</p>}
+       { data !== null ? data.map((drink) => (<Drink key={drink.id} isFav={false} strDrink={drink.strDrink} strDrinkThumb={drink.strDrinkThumb}/>)): <p>No drinks found!</p>}
 
       </div>
     );

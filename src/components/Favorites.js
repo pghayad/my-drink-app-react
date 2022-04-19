@@ -8,7 +8,7 @@ function Favorites( ) {
     const [sortedFavs, setSortedFavs] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/posts")
+        fetch("https://my-drink-app-react.herokuapp.com/")
           .then((r) => r.json())
           .then((data) => {
             console.log(data)
